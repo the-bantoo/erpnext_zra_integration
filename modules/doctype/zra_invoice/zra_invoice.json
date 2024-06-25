@@ -1,0 +1,35 @@
+{
+    "doctype": "DocType",
+    "name": "ZRA Invoice",
+    "module": "ERPNext ZRA Integration",
+    "fields": [
+        {
+            "fieldname": "customer_name",
+            "fieldtype": "Data",
+            "label": "Customer Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "posting_date",
+            "fieldtype": "Date",
+            "label": "Posting Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "items",
+            "fieldtype": "Table",
+            "label": "Items",
+            "options": "ZRA Invoice Item",
+            "reqd": 1
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        }
+    ]
+}

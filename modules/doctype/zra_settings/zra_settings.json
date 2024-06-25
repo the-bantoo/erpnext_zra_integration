@@ -1,0 +1,31 @@
+{
+    "doctype": "DocType",
+    "name": "ZRA Settings",
+    "module": "ERPNext ZRA Integration",
+    "fields": [
+        {
+            "fieldname": "api_key",
+            "fieldtype": "Data",
+            "label": "API Key",
+            "reqd": 1
+        },
+        {
+            "fieldname": "device_serial_no",
+            "fieldtype": "Data",
+            "label": "Device Serial Number",
+            "reqd": 1
+        },
+        {
+            "fieldname": "branch_id",
+            "fieldtype": "Data",
+            "label": "Branch ID",
+            "reqd": 1
+        },
+        {
+            "fieldname": "tpin",
+            "fieldtype": "Data",
+            "label": "TPIN",
+            "reqd": 1
+        }
+    ]
+}
