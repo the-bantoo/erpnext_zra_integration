@@ -33,4 +33,20 @@ class ZRAAPI:
         response = requests.post(url, data=json.dumps(invoice_data), headers=headers)
         return response.json()
 
-    # We can Add other methods as required by the VSDC API
+    def get_standard_codes(self):
+        url = f"{self.BASE_URL}/standardCodes"
+        headers = {
+            'Authorization': f'Bearer {self.api_key}'
+        }
+        response = requests.get(url, headers=headers)
+        return response.json()
+
+    def get_tax_types(self):
+        url = f"{self.BASE_URL}/taxTypes"
+        headers = {
+            'Authorization': f'Bearer {self.api_key}'
+        }
+        response = requests.get(url, headers=headers)
+        return response.json()
+
+    # We Can Add other methods as required by the VSDC API
