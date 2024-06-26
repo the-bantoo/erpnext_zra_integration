@@ -19,18 +19,30 @@ class ZRAInvoice(Document):
             frappe.throw(response['error'])
 
     def get_invoice_data(self):
-        # Prepare the invoice data as required by the ZRA API
+        items = []
+        for item in self.items:
+            items.append({
+                "itemCode": item.item_code,
+                "itemName": item.item_name,
+                "qty": item.qty,
+                "unitPrice": item.rate,
+                "totalAmount": item.amount,
+                "taxAmount": item.tax_amount,
+                "discountAmount": item.discount_amount
+            })
+
         invoice_data = {
-            "invoice_no": self.name,
-            "date": self.posting_date,
-            "customer_name": self.customer_name,
-            "items": [{
-                "item_code": item.item_code,
-                "description": item.description,
-                "quantity": item.qty,
-                "rate": item.rate,
-                "amount": item.amount
-            } for item in self.items],
-            # we We can Add other fields as needed
+            "invoiceNo": self.name,
+            "issueDate": self.posting_date,
+            "tpin": self.tpin,
+            "bhfId": self.branch_id,
+            "customerName": self.customer_name,
+            "items": items,
+            "totalAmount": self.total,
+            "taxAmount": self.total_taxes_and_charges,
+            "totalDiscount": self.total_discount,
+            "paymentType": self.payment_type,
+            "currency": self.currency,
+            "exchangeRate": self.conversion_rate
         }
         return invoice_data
